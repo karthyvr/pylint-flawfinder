@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>AWS</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="static/stylesheets/style.css">
+
+    <title>Secure Programming Assignment 2</title>
+
+  <body>
+   <h1>Secure Programming Assignment 2</h1>
+   <br/>
+       <h3><a href="/index">Home</a></h3>
+       <h3><a href="{{ url_for('logout')}}">Logout</a></h3>
+       <h3><a href="{{ url_for('list')}}">List Files</a></h3>
+       <br/>
+   {% if user_name %}
+        <h3>User Name :{{ user_name }}</h3>
+   {% endif %}
+   <br/>   
+   {% if result_msg %}
+   <br/>
+   <br/>
+        <h3>{{ result_msg }}</h3>
+   {% endif %}
+   <br/>
+    <h2>Upload new File to Amazon S3</h2>
+    <form action="/upload" method=post enctype=multipart/form-data>
+      <p><input type=file name="input_file">
+        <input type="hidden" name="username" value="{{ user_name }}">
+         <input type=submit value="Upload" name="upload_file">
+      </p>
+      <br/><br/>
+    </form>
+    </head>
+  </body>
+
+</html>

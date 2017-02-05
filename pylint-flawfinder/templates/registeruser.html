@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>AWS </title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="static/stylesheets/style.css">
+
+    <title>Secure Programming Assignment 2 - Karthy</title>
+</head>
+  <body>
+   <h1>Secure Programming Assignment 2 - Karthy</h1>
+   <br/>
+   <br/>
+   <script type="text/javascript">
+
+  function checkPassword(str)
+  {
+    var re = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+    return re.test(str);
+  }
+
+  function checkForm(form)
+  {
+    if(form.username.value == "") {
+      alert("Error: Username cannot be blank!");
+      form.username.focus();
+      return false;
+    }
+    re = /^\w+.{8,}$/;
+    if(!re.test(form.username.value)) {
+      alert("Error: Username must contain only letters, numbers and underscores!");
+      form.username.focus();
+      return false;
+    }
+    if(form.userpwd.value != "" && form.userpwd.value == form.userpwd2.value) {
+      if(!checkPassword(form.userpwd.value)) {
+        alert("The password is weak!");
+        form.userpwd.focus();
+        return false;
+      }
+    } else {
+      alert("Error: Please check that you've entered and confirmed your password!");
+      form.userpwd.focus();
+      return false;
+    }
+    return true;
+  }
+
+</script>
+    <h2>Main Menu</h2>
+       <form action="/register" method=post onsubmit="return checkForm(this);">
+        <p>Enter the User name: <input type="text" name="username"></p>
+        <p>Enter the Password: <input type="password" name="userpwd"></p>
+        <p>Confirm the Password: <input type="password" name="userpwd2"></p>
+         <input type=submit value="Submit" name="submit">
+      </p>
+    </form>
+
+  </body>
+
+</html>

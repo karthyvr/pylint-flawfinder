@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>AWS </title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="static/stylesheets/style.css">
+
+    <title>Secure Programming Assignment 2 - Karthy</title>
+</head>
+  <body>
+   <h1>Secure Programming Assignment 2 - Karthy</h1>
+   <br/>
+      {% if result_msg %}
+        <h3>{{ result_msg }}</h3>
+   {% endif %}
+   <br/>
+    <h2>Main Menu</h2>
+       <form action="/checkuser" method=post>
+      <p>  Enter the User name: <input type="text" name="username"><br>
+        Enter the Password: <input type="password" name="userpwd"><br>
+         <input type=submit value="Submit" name="submit">
+      </p>
+    </form>
+      <form action="/registeruser" method=post>
+        <p>  New User? Please click the Register button
+         <input type=submit value="Submit" name="Register">
+      </p>
+      <br/><br/>
+    </form>
+
+  </body>
+
+</html>

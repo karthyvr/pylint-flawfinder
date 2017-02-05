@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>Karthy Vaiyampalayam Ramakrishnan</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="static/stylesheets/style.css">
+
+    <title>Secure Programming Assignment #2 </title>
+  </head>
+  <body>
+   <h1>Secure Programming Assignment #2</h1>
+   <br/>
+   <h3><a href="/index">Home</a></h3>
+   <h3><a href="{{ url_for('logout')}}">Logout</a></h3>
+   <br/>
+   {% if result_msg %}
+        <h3>{{ result_msg }}</h3>
+   {% endif %}
+    <h2>List of Input Code Files for static analysis tool in Amazon S3 Storage</h2>
+    <table>
+       <tr border="5">
+          <th><h3>File Name</h3></th>
+          <th><h3>size#</h3></th>
+          <th><h3>Last Modified</h3></th>
+        </tr>
+        {% if files_list %}
+        {% for i in files_list %}
+        <form action="/deleteordownload">
+        <tr>
+          <td nowrap>{{ i.name }}</td>
+          <td nowrap>{{ i.size }}</td>
+          <td nowrap>{{ i.last_modified }}</td>
+            <input type="hidden" name="filename" value="{{ i.name }}">
+            <td><input type=submit value="Download" name="operation"></td>
+            <td><input type=submit value="Delete" name="operation"></td>
+            <td><input type=submit value="View" name="operation"></td>
+        </tr>
+</form>
+       {% endfor %}
+       {% endif %}
+    </table>
+    <h2>List of Output Static Analysis Pylint Report Files in Amazon S3 Storage</h2>
+    <table>
+       <tr border="5">
+          <th><h3>File Name</h3></th>
+          <th><h3>size#</h3></th>
+          <th><h3>Last Modified</h3></th>
+        </tr>
+        {% if report_list %}
+        {% for i in report_list %}
+        <form action="/deleteordownloadreport">
+        <tr>
+          <td nowrap>{{ i.name }}</td>
+          <td nowrap>{{ i.size }}</td>
+          <td nowrap>{{ i.last_modified }}</td>
+            <input type="hidden" name="filename" value="{{ i.name }}">
+            <td><input type=submit value="Downloadpylintreport" name="operation"></td>
+            <td><input type=submit value="Deletepylintreport" name="operation"></td>
+            <td><input type=submit value="Viewpylintreport" name="operation"></td>
+        </tr>
+</form>
+       {% endfor %}
+       {% endif %}
+    </table>
+  
+  <h2>List of Output Static Analysis Flaw Finder Report Files in Amazon S3 Storage</h2>
+    <table>
+       <tr border="5">
+          <th><h3>File Name</h3></th>
+          <th><h3>size#</h3></th>
+          <th><h3>Last Modified</h3></th>
+        </tr>
+        {% if flawreport_list %}
+        {% for i in flawreport_list %}
+        <form action="/deleteordownloadflawreport">
+        <tr>
+          <td nowrap>{{ i.name }}</td>
+          <td nowrap>{{ i.size }}</td>
+          <td nowrap>{{ i.last_modified }}</td>
+            <input type="hidden" name="filename" value="{{ i.name }}">
+            <td><input type=submit value="Downloadflawfinderreport" name="operation"></td>
+            <td><input type=submit value="Deleteflawfinderreport" name="operation"></td>
+            <td><input type=submit value="Viewflawfinderreport" name="operation"></td>
+        </tr>
+</form>
+       {% endfor %}
+       {% endif %}
+    </table>
+  
+  </body>
+
+
+</html>
